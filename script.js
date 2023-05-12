@@ -20,7 +20,6 @@ function generatePassword(){
     return;
   } 
   userParameters.push(userLength)
-  console.log(userParameters)
 
   var includeNames = ["lowercase", "uppercase", "numeric", "special"]
   
@@ -33,10 +32,10 @@ function generatePassword(){
     }
   }
 
-  // if (userParameters.includes(true) === false){
-  //   window.alert("Must allow one character type")
-  //   return;
-  // }
+  if (userParameters.includes(true) === false){
+    window.alert("Must allow one character type")
+    return;
+  }
   console.log(userParameters)
 
 
