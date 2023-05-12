@@ -3,26 +3,30 @@ var generateBtn = document.querySelector("#generate");
 
 //Generates Password
 function generatePassword(){
-
+  var pass = ""
   var userParameters = []
+  var lowercaseChar = "abcdefghijklmnopqrstuvwxyz"
+  var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var numericChar = "1234567890"
+  var specialChar = "!@#$%^&*?-"
+
+  //gets user input of password length
   var userLength = window.prompt("Enter how long you want your password to be (8-128): ")
+  userLength = Number(userLength)
   console.log(userLength)
   console.log(typeof userLength)
   if (userLength === null){
     return;
-  }
-  //need to fix error handling for if user enters something other than numbers
-  else if (typeof userLength !== "string"){
+  } else if (isNaN(userLength)){
     window.alert("Must enter a NUMBER between 8 and 128 characters")
     return;
   } else if (userLength < 8 || userLength > 128){
     window.alert("Must enter a number between 8 and 128 characters")
     return;
   } 
-  userParameters.push(userLength)
 
+  //gets user input of character preference
   var includeNames = ["lowercase", "uppercase", "numeric", "special"]
-  
   for (var i = 0; i < 4; i++){
     var userInclude = window.prompt("Click OK if you would like to include " + includeNames[i] + " characters")
     if (userInclude === null){
@@ -31,14 +35,17 @@ function generatePassword(){
       userParameters.push(true)
     }
   }
-
   if (userParameters.includes(true) === false){
     window.alert("Must allow one character type")
     return;
   }
   console.log(userParameters)
 
+  //creates password
+  // for (var i = 0; i < userLength; ){
 
+  // }
+  
 }
 
 // Write password to the #password input
