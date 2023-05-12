@@ -3,12 +3,19 @@ var generateBtn = document.querySelector("#generate");
 
 //Generates Password
 function generatePassword(){
-  var pass = ""
+  // creates password
+  function makePassword(length, charSet){
+    password = ""
+    for (var i = 0; i <= length; i++){
+      var randomNum = Math.floor(Math.random() * charSet.length)
+      password = password.concat(charSet[randomNum])
+    }
+    return(password)
+  }
+
+  var char = ""
   var userParameters = []
-  var lowercaseChar = "abcdefghijklmnopqrstuvwxyz"
-  var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numericChar = "1234567890"
-  var specialChar = "!@#$%^&*?-"
+  var charCategories = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?-"]
 
   //gets user input of password length
   var userLength = window.prompt("Enter how long you want your password to be (8-128): ")
@@ -33,19 +40,19 @@ function generatePassword(){
       userParameters.push(false)
     } else {
       userParameters.push(true)
+      char = char.concat(charCategories[i])
     }
   }
   if (userParameters.includes(true) === false){
-    window.alert("Must allow one character type")
+    window.alert("Must allow at least one character type")
     return;
   }
+  console.log(char)
   console.log(userParameters)
 
-  //creates password
-  // for (var i = 0; i < userLength; ){
-
-  // }
-  
+  var pass = makePassword(userLength, char)
+  console.log(pass)
+  return(pass)
 }
 
 // Write password to the #password input
