@@ -8,12 +8,14 @@ function generatePassword(){
     password = ""
     for (var i = 0; i <= length; i++){
       var randomNum = Math.floor(Math.random() * charSet.length)
-      password = password.concat(charSet[randomNum])
+      var randomCategory = charSet[randomNum]
+      randomNum = Math.floor(Math.random() * randomCategory.length)
+      password = password.concat(randomCategory[randomNum])
     }
     return(password)
   }
 
-  var char = ""
+  var char = []
   var userParameters = []
   var charCategories = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?-"]
 
@@ -40,7 +42,7 @@ function generatePassword(){
       userParameters.push(false)
     } else {
       userParameters.push(true)
-      char = char.concat(charCategories[i])
+      char.push(charCategories[i])
     }
   }
   if (userParameters.includes(true) === false){
