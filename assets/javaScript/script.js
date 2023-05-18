@@ -22,8 +22,7 @@ function generatePassword(){
   //gets user input of password length
   var userLength = window.prompt("Enter how long you want your password to be (8-128): ")
   userLength = parseInt(userLength)
-  console.log(userLength)
-  console.log(typeof userLength)
+  //error handling for users password length
   if (userLength === null){
     return;
   } else if (isNaN(userLength)){
@@ -45,15 +44,13 @@ function generatePassword(){
       char.push(charCategories[i])
     }
   }
+  //error handling for user parameters
   if (userParameters.includes(true) === false){
     window.alert("Must allow at least one character type")
     return;
   }
-  console.log(char)
-  console.log(userParameters)
 
   var pass = makePassword(userLength, char)
-  console.log(pass)
   return(pass)
 }
 
