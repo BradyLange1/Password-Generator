@@ -6,7 +6,7 @@ function generatePassword(){
   // creates password
   function makePassword(length, charSet){
     password = ""
-    for (var i = 0; i <= length; i++){
+    for (var i = 0; i < length; i++){
       var randomNum = Math.floor(Math.random() * charSet.length)
       var randomCategory = charSet[randomNum]
       randomNum = Math.floor(Math.random() * randomCategory.length)
@@ -21,7 +21,7 @@ function generatePassword(){
 
   //gets user input of password length
   var userLength = window.prompt("Enter how long you want your password to be (8-128): ")
-  userLength = Number(userLength)
+  userLength = parseInt(userLength)
   console.log(userLength)
   console.log(typeof userLength)
   if (userLength === null){
